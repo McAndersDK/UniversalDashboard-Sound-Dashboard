@@ -38,6 +38,8 @@ function New-UDSound {
         $Loop,
         [switch]
         $AutoStart,
+        [int]
+        $PlaybackRate = 1,
         [Parameter()]
         [object]$OnError,
         [Parameter()]
@@ -92,6 +94,7 @@ function New-UDSound {
             position                = $Position
             volume                  = $Volume
             playbackRate            = $PlaybackRate
+            loop                    = $Loop
             autoLoad                = $AutoStart
             activeOnError           = $activeOnError
             activeOnLoading         = $activeOnLoading

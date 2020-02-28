@@ -5,11 +5,11 @@ foreach ($module in get-childitem .\modules\) {
 
 $Dashboard = New-UDDashboard -Title "Hello, World!" -Verbose -Content {
     New-UDHeading -Text "Hello, World!" -Size 1
-    New-UDSound -URL './Public/Sounds/HornHonk.wav' -PlayStatus PLAYING -AutoStart
+    New-UDSound -URL './Public/Sounds/HornHonk.wav' -PlayStatus PLAYING
     New-UDHeading -Text 'After Audio' -Size 1
 
 }
 $publicfolder = Publish-UDFolder -path (Join-Path $PSScriptRoot "Public") -RequestPath "/Public"
 Get-UDDashboard | Stop-UDDashboard
-Enable-UDLogging -Console -Level debug
+Enable-UDLogging -Console -Level info
 Start-UDDashboard -Dashboard $Dashboard -Port 10001 -PublishedFolder $publicfolder -DisableTelemetry -Verbose
